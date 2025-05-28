@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Wed Apr 10 15:31:40 2024\n"
+"POT-Creation-Date: Wed May 28 18:14:57 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -20,62 +20,76 @@ msgstr ""
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "Hello World"
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "This text is shown as first message when the level is played.\n"
 "You can insert hints in the proof below. They will appear in this side panel\n"
 "depending on the proof a user provides."
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "You can either start using `«{h}»` or `«{g}»`."
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "You should use `«{h}»` now."
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "You should use `«{g}»` now."
 msgstr ""
 
-#: Game.Levels.DemoWorld.L01_HelloWorld
+#: Game.Levels.TermWorld.L01_HelloWorld
 msgid "This last message appears if the level is solved."
 msgstr ""
 
-#: Game.Levels.DemoWorld
-msgid "Demo World"
+#: Game.Levels.TermWorld
+msgid "Term World"
 msgstr ""
 
-#: Game.Levels.DemoWorld
-msgid "This introduction is shown before one enters level 1 of the demo world. Use markdown."
-msgstr ""
-
-#: Game
-msgid "Hello World Game"
-msgstr ""
-
-#: Game
-msgid "This text appears on the starting page where one selects the world/level to play.\n"
-"You can use markdown."
-msgstr ""
-
-#: Game
-msgid "Here you can put additional information about the game. It is accessible\n"
-"from the starting through the drop-down menu.\n"
+#: Game.Levels.TermWorld
+msgid "The untyped lambda calculus is a small language that has two core concepts of\n"
+"*abstraction* and *application*. As an example, we might have a term such:\n"
 "\n"
-"For example: Game version, Credits, Link to Github and Zulip, etc.\n"
+"$(λ x \\, . \\, λ y \\, . \\, x + y)$\n"
 "\n"
-"Use markdown."
+"that intuitively is a function that takes two arguments and adds them together.\n"
+"In deciding how to represent this within a proof assistant, this presents some\n"
+"challenges in deciding how to represent *variable binding* and *substitution*.\n"
+"\n"
+"In this game we choose the *locally nameless* representation, which is in fact\n"
+"what Lean itself uses."
 msgstr ""
 
 #: Game
-msgid "Game Template"
+msgid "Lambda Calculus Game"
 msgstr ""
 
 #: Game
-msgid "You should use this game as a template for your own game and add your own levels."
+msgid "# Welcome to the Lambda Calculus Game!\n"
+"\n"
+"In this game we will define and prove properties of the untyped and simply typed\n"
+"lambda calculus. We assume as a prerequisite some familiarity with Lean, but not\n"
+"much more than is present in the [Natural Number\n"
+"Game](https://adam.math.hhu.de/#/g/leanprover-community/nng4)."
+msgstr ""
+
+#: Game
+msgid "## Credits\n"
+"\n"
+"* **Authors**: Chris Henson\n"
+"* **Game Engine**: Jon Eugster, Alexander Bentkamp, Patrick Massot"
+msgstr ""
+
+#: Game
+msgid "An introduction to formalized metatheory"
+msgstr ""
+
+#: Game
+msgid "In this game you will prove properties of the untyped and simply\n"
+"typed lambda calculus. Topics include type safety, confluence, and an\n"
+"introduction to semantics."
 msgstr ""
