@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Wed May 28 18:14:57 2025\n"
+"POT-Creation-Date: Wed May 28 21:42:22 2025\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -20,30 +20,68 @@ msgstr ""
 msgid "intermediate goal solved! 🎉"
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "Hello World"
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "Substitution"
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "This text is shown as first message when the level is played.\n"
-"You can insert hints in the proof below. They will appear in this side panel\n"
-"depending on the proof a user provides."
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "A key idea of the lambda calculus is *substitution*. Intuitively, it is the\n"
+"simple idea that functions taking arguments. For instance, we might have a\n"
+"function that adds together numbers:\n"
+"$$(λ x \\, . \\, λ y \\, . \\, x + y)$$\n"
+"\n"
+"When expect that when we *apply* some arguments, that we should consistently\n"
+"replace variable names to in some sense evaluate the function. This turns out to\n"
+"be somewhat subtle. For instance, if we define variables in an abstraction as\n"
+"strings, the terms $(λ x \\, .  \\, x)$ and $(λ y \\, .  \\, y)$ become\n"
+"*syntactically* distinct, despite both representing what looks like an identity\n"
+"function.\n"
+"\n"
+"In this game we choose the *locally nameless* representation, which is in fact\n"
+"what Lean itself uses. This method syntactically distinguishes between the\n"
+"*free* and *bound* variables of a term.\n"
+"\n"
+"Bound variables use *de Bruijn indices*, which refers to a\n"
+"bound variable by a natural number that indicates how far away its binding is.\n"
+"The example of addition above now becomes $(λ \\, . \\, λ \\, . \\, 1 + 0)$, while\n"
+"both of the identity terms above become $(λ \\, . \\, 0)$.\n"
+"\n"
+"In the locally nameless representation, substitution means substitution of free\n"
+"variables, which now has no concern of overlap with bound variables. As an\n"
+"example, let's try proving that $(λ \\, . \\, X)[X := Y] = (λ \\, . \\, Y)$."
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "You can either start using `«{h}»` or `«{g}»`."
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "You can use either `unfold` or `simp` with `Term.subst`."
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "You should use `«{h}»` now."
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "Next, we'll see what the equivalent of substitution is for bound\n"
+"variables"
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "You should use `«{g}»` now."
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "```\n"
+"inductive Term\n"
+"| bvar : ℕ → Term\n"
+"| fvar : ℕ → Term\n"
+"| lam  : Term → Term\n"
+"| app  : Term → Term → Term\n"
+"```\n"
+"\n"
+"`Term` is a lambda calculus term, using the locally nameless representation."
 msgstr ""
 
-#: Game.Levels.TermWorld.L01_HelloWorld
-msgid "This last message appears if the level is solved."
+#: Game.Levels.TermWorld.L01_Substitution
+msgid "```\n"
+"def Term.subst (x : ℕ) (sub : Term) : Term → Term\n"
+"| bvar i  => bvar i\n"
+"| fvar x' => if x = x' then sub else fvar x'\n"
+"| app l r => app (subst x sub l) (subst x sub r)\n"
+"| lam M   => lam $ subst x sub M\n"
+"```\n"
+"\n"
+"Replacement of a free variable by a term."
 msgstr ""
 
 #: Game.Levels.TermWorld
@@ -51,17 +89,11 @@ msgid "Term World"
 msgstr ""
 
 #: Game.Levels.TermWorld
-msgid "The untyped lambda calculus is a small language that has two core concepts of\n"
-"*abstraction* and *application*. As an example, we might have a term such:\n"
-"\n"
-"$(λ x \\, . \\, λ y \\, . \\, x + y)$\n"
-"\n"
-"that intuitively is a function that takes two arguments and adds them together.\n"
-"In deciding how to represent this within a proof assistant, this presents some\n"
-"challenges in deciding how to represent *variable binding* and *substitution*.\n"
-"\n"
-"In this game we choose the *locally nameless* representation, which is in fact\n"
-"what Lean itself uses."
+msgid "Welcome to Term World! Here we will define what a lambda term is in Lean, along\n"
+"with a few operations that allow us to perform various kinds of substitutions.\n"
+"At its core, the lambda calculus is \"just\" functions of a single variables. As\n"
+"we'll see however, there are some tricky aspects to formalizing this in a proof\n"
+"assistant."
 msgstr ""
 
 #: Game

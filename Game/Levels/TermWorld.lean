@@ -1,18 +1,13 @@
-import Game.Levels.TermWorld.L01_HelloWorld
+import Game.LocallyNameless.Term
+import Game.Levels.TermWorld.L01_Substitution
 
 World "TermWorld"
 Title "Term World"
 
 Introduction "
-The untyped lambda calculus is a small language that has two core concepts of
-*abstraction* and *application*. As an example, we might have a term such:
-
-$(λ x \\, . \\, λ y \\, . \\, x + y)$
-
-that intuitively is a function that takes two arguments and adds them together.
-In deciding how to represent this within a proof assistant, this presents some
-challenges in deciding how to represent *variable binding* and *substitution*.
-
-In this game we choose the *locally nameless* representation, which is in fact
-what Lean itself uses.
+Welcome to Term World! Here we will define what a lambda term is in Lean, along
+with a few operations that allow us to perform various kinds of substitutions.
+At its core, the lambda calculus is \"just\" functions of a single variables. As
+we'll see however, there are some tricky aspects to formalizing this in a proof
+assistant.
 "
